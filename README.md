@@ -42,3 +42,7 @@ When this happens, the (Daemon) ./tcpclient_recv terminates, and the led that wa
 
 ### On server
 Type 'exit', or use CTRL^C
+
+## Done by
+Tomás Abreu, a88218
+Masters in Embedded Systems @ Universidade do Minho, 2021
