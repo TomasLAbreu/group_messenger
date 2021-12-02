@@ -1,5 +1,5 @@
 # group_messenger
-This application implements a "Broadcasting Chat service".
+This application implements a "Broadcasting Chat service", making use of three services:
 ```
 Client Message Receiver Service: tcpclient_recv
 Client Message Sender Service: tcpclient_send
@@ -15,25 +15,28 @@ Server App: tcpserver
 # How it works
 The tcpclient_recv establishes a TCP connection with the server, and creates two message queues to commmunicate with the tcpclient_send, that allows printing of messages and input reading from user. One message queue is used to receive the messages from the user, the other one is used to send the received messages from the server to the client (on tcpclient_send).
 
-# Compile
+# Dependencies
+...gcc, scp (optional), rm?
+
+# Installation
 Use the existent makefile.
 ```make``` or ```make all``` to create all needed apps.
 ```make clean``` to delete all generated files.
 ```make transfer``` to copy all generated files to the Raspberry Pi, to a predefined path, using a predefined IP.
 
 - $(CC) define your compiler.
-- $(IP) define your Raspberry Pi IP (OPTIONAL)
+- $(IP) define your Raspberry Pi IP
 - $(PATH) define your Raspberry Pi directory to paste the files
 
 
 ## Start TCP server
-Starts a TCP server on port <port>.
-```shell
+Starts a TCP server on a given port.
+```Shell
 $ ./tcpserver <port>
 ```
 ## Start TCP client
-Starts a TCP client connected to <servername> on port <port>
-```shell
+Starts a TCP client connected to a given server name on a given port.
+```Shell
 $ ./tcpclient_recv <servername> <port>
 ```
 When this is running, a led (led0 - green led in Raspberry Pi) is light up. This is done via a device driver, developed in previous classes.
