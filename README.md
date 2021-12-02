@@ -1,27 +1,27 @@
 # group_messenger
 
-# Start TCP server
+## Start TCP server
 ```shell
 $ ./tcpserver <port>
 ```
-# Start TCP client
+## Start TCP client
 ```shell
 $ ./tcpclient_recv <servername> <port>
 ```
-# Client - Send message / see received messages
+## Client - Send message / see received messages
 ```shell
 $ ./tcpclient_send [msg msg1 ... msgN]
 ```
-# Close connection
-## On client
+## Close connection
+### On client
 Type 'exit', or use CTRL^C 
 ```shell
 $ ./tcpclient_send exit
 ```
-## On server
+### On server
 Type 'exit', or use CTRL^C
 
-# After establishing connection
+## After establishing connection
 client can send a message to the server
 server receives all messages and broadcasts them to the other clients
 server asks periodically the client states through message queues
