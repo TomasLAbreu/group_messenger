@@ -44,6 +44,6 @@ When this happens, the (Daemon) ./tcpclient_recv terminates, and the led that wa
 Type 'exit', or use CTRL^C
 
 ## Done by
-Tomás Abreu, a88218
+José Tomás Abreu, a88218
 
 Masters in Embedded Systems @ Universidade do Minho, 2021
