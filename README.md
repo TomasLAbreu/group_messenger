@@ -22,10 +22,9 @@ $ ./tcpclient_send exit
 Type 'exit', or use CTRL^C
 
 # After establishing connection
-# client can send a message to the server
-# server receives all messages and broadcasts them to the other clients
-
-# server asks periodically the client states through message queues
+client can send a message to the server
+server receives all messages and broadcasts them to the other clients
+server asks periodically the client states through message queues
 	- every 5 seconds asks "State?"
 	- every client replies with is state (ONLINE, AFK)
 	- each client checks his own state every 60sec
