@@ -6,6 +6,7 @@ CFLAGS=-pthread -lrt
 OBJS=tcpclient_send.elf tcpclient_recv.elf tcpserver.elf
 # TARGET=
 IP=10.42.0.254
+PATHRASP=/etc/code/tcp/messengerv2
 
 all:$(OBJS) 
 
@@ -22,7 +23,7 @@ tcpclient_send.elf: tcpclient_send.c
 # 	$(CC) -o  $@ $< $(CFLAGS)
 
 transfer: 
-	scp tcpclient_recv.elf tcpserver.elf tcpclient_send.elf root@$(IP):/etc/code/tcp/messengerv2	
+	scp $(OBJS) root@$(IP):$(PATHRASP)
 
 .PHONY: clean
 clean:

@@ -15,6 +15,17 @@ Server App: tcpserver
 # How it works
 The tcpclient_recv establishes a TCP connection with the server, and creates two message queues to commmunicate with the tcpclient_send, that allows printing of messages and input reading from user. One message queue is used to receive the messages from the user, the other one is used to send the received messages from the server to the client (on tcpclient_send).
 
+# Compile
+Use the existent makefile.
+```make``` or ```make all``` to create all needed apps.
+```make clean``` to delete all generated files.
+```make transfer``` to copy all generated files to the Raspberry Pi, to a predefined path, using a predefined IP.
+
+- $(CC) define your compiler.
+- $(IP) define your Raspberry Pi IP (OPTIONAL)
+- $(PATH) define your Raspberry Pi directory to paste the files
+
+
 ## Start TCP server
 Starts a TCP server on port <port>.
 ```shell
