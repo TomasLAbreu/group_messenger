@@ -2,29 +2,19 @@ CC=gcc
 # CC=arm-buildroot-linux-gnueabihf-gcc
 
 CFLAGS=-pthread -lrt
-#DEPS=parser.h
-OBJS=tcpclient_send.elf tcpclient_recv.elf tcpserver.elf
-# TARGET=
+TARGET=tcpserver.elf
+
 IP=10.42.0.254
-PATHRASP=/etc/code/tcp/messengerv2
+DIR=/etc/code/tcp/messengerv2
 
-all:$(OBJS) 
+all:$(TARGET)
 
-tcpclient_recv.elf: tcpclient_recv.c parser.c
-	$(CC) -o tcpclient_recv.elf tcpclient_recv.c parser.c $(CFLAGS)
+tcpserver.elf: tcpserver.c ../utils/parser.c
+	$(CC) -o $@ $^ $(CFLAGS)
 
-tcpserver.elf: tcpserver.c parser.c
-	$(CC) -o tcpserver.elf tcpserver.c parser.c $(CFLAGS)
+transfer:
+	scp $(TARGET) root@$(IP):$(DIR)
 
-tcpclient_send.elf: tcpclient_send.c
-	$(CC) -o tcpclient_send.elf tcpclient_send.c $(CFLAGS)
-
-# $(OBJS): %.elf: %.c
-# 	$(CC) -o  $@ $< $(CFLAGS)
-
-transfer: 
-	scp $(OBJS) root@$(IP):$(PATHRASP)
-
-.PHONY: clean
+.PHONY: clean all transfer
 clean:
-	rm -rf *.elf *.o
+	rm -rf *.elf
