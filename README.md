@@ -2,12 +2,11 @@
 ## Overview
 This application implements a "Broadcasting Chat service", making use of three services:
 
-**Client Message Receiver Service**: *tcpclient_recv*
+- **Client Message Receiver Service**: *tcpclient_recv*
+- **Client Message Sender Service**: *tcpclient_send*
+- **Server App**: *tcpserver*
 
-**Client Message Sender Service**: *tcpclient_send*
-
-**Server App**: *tcpserver*
-
+Application specifications:
 - Each Client is connected to the Server via TCP/IP.
 - Each Client connected to the Server is be able to send to the Server a character string passed by argument via command line arguments.
 - The Server forwards the received messages to all connected Clients, and identifies the client that has sent the message.
