@@ -2,12 +2,11 @@
 ## Overview
 This application implements a "Broadcasting Chat service", making use of three services:
 
-**Client Message Receiver Service**: *tcpclient_recv*
+- **Client Message Receiver Service**: *tcpclient_recv*
+- **Client Message Sender Service**: *tcpclient_send*
+- **Server App**: *tcpserver*
 
-**Client Message Sender Service**: *tcpclient_send*
-
-**Server App**: *tcpserver*
-
+Application specifications:
 - Each Client is connected to the Server via TCP/IP.
 - Each Client connected to the Server is be able to send to the Server a character string passed by argument via command line arguments.
 - The Server forwards the received messages to all connected Clients, and identifies the client that has sent the message.
@@ -77,11 +76,14 @@ $ pwd
 1. Starts a **TCP server** on a given port.
 
 ```shell
+$ cd tcpserver/
 $ ./tcpserver <port>
 ```
 2. Starts a **TCP client** connected to a given server name on a given port. (If you are running this on the Raspberry Pi 4 model B, a led (*led0* - green led) is light up after executing this command. This is done via a device driver, developed in previous classes.)
 
 ```shell
+$ cd ..
+$ cd tcpclient/
 $ ./tcpclient_recv <servername> <port>
 ```
 3. Send message(s) to the server or to see messages that weren't yet read. If a message is not supplied, the this command will just print the messages that weren't yet read.
