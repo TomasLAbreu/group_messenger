@@ -76,26 +76,23 @@ $ pwd
 1. Starts a **TCP server** on a given port.
 
 ```shell
-$ cd tcpserver/
-$ ./tcpserver <port>
+$ ./tcpserver/tcpserver <port>
 ```
 2. Starts a **TCP client** connected to a given server name on a given port. (If you are running this on the Raspberry Pi 4 model B, a led (*led0* - green led) is light up after executing this command. This is done via a device driver, developed in previous classes.)
 
 ```shell
-$ cd ..
-$ cd tcpclient/
-$ ./tcpclient_recv <servername> <port>
+$ ./tcpclient/tcpclient_recv <servername> <port>
 ```
 3. Send message(s) to the server or to see messages that weren't yet read. If a message is not supplied, the this command will just print the messages that weren't yet read.
 
 ```shell
-$ ./tcpclient_send [msg msg1 ... msgN]
+$ ./tcpclient/tcpclient_send [msg msg1 ... msgN]
 ```
 ### Close connection
 1. **Close client** connection to server. (When this happens, the TCP client connection terminates, and the led that was previously light up (led0) is turned off.)
 
 ```shell
-$ ./tcpclient_send exit
+$ ./tcpclient/tcpclient_send exit
 ```
 2. **Close server**, type 'exit' or use CTRL^C.
 ```shell
