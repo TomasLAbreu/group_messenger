@@ -12,13 +12,13 @@ Server App: tcpserver
 - The Server has special commands to check the client status, and others.
 - The Client Message Receiver Service runs in the background. 
 
-# How it works
+## How it works
 The tcpclient_recv establishes a TCP connection with the server, and creates two message queues to commmunicate with the tcpclient_send, that allows printing of messages and input reading from user. One message queue is used to receive the messages from the user, the other one is used to send the received messages from the server to the client (on tcpclient_send).
 
-# Dependencies
+## Dependencies
 ...gcc, scp (optional), rm?
 
-# Installation
+## Installation
 Use the existent makefile.
 ```make``` or ```make all``` to create all needed apps.
 ```make clean``` to delete all generated files.
@@ -28,25 +28,25 @@ Use the existent makefile.
 - $(IP) define your Raspberry Pi IP
 - $(PATH) define your Raspberry Pi directory to paste the files
 
-
-## Start TCP server
+## Usage
+### Start TCP server
 Starts a TCP server on a given port.
 ```Shell
 $ ./tcpserver <port>
 ```
-## Start TCP client
+### Start TCP client
 Starts a TCP client connected to a given server name on a given port.
 ```Shell
 $ ./tcpclient_recv <servername> <port>
 ```
 When this is running, a led (led0 - green led in Raspberry Pi) is light up. This is done via a device driver, developed in previous classes.
 
-## Client - Send message / see received messages
+### Client - Send message / see received messages
 Send message to server or to see messages that have been send to the client since last time. Everytime the user wants to send a message he must use tcpclient_send with the wanted message to be sent. If a message is not supplied, the tcpclient_send will just print the messages that weren't yet read.
 ```shell
 $ ./tcpclient_send [msg msg1 ... msgN]
 ```
-## Close connection
+### Close connection
 ### On client
 Type 'exit', or use CTRL^C 
 ```shell
