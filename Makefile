@@ -8,12 +8,10 @@ all: client server
 
 client:
 	$(MAKE) all -C $(CLIENT)
-	@find $(CLIENT) -name "*.elf" | xargs cp -u -t .
 	@echo ''
 
 server:
 	$(MAKE) all -C $(SERVER)
-	@find $(SERVER) -name "*.elf" | xargs cp -u -t .
 	@echo ''
 
 # ---------------
@@ -33,7 +31,6 @@ transfer_server:
 # make clean
 # ---------------
 clean:
-	@rm -f *.elf
 	$(MAKE) $@ -C $(CLIENT)
 	@echo ''
 	$(MAKE) $@ -C $(SERVER)
