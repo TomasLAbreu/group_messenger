@@ -52,9 +52,6 @@ struct client_socket_info
 	int sockfd;
 	int state;
 	int index;
-
-	// mqd_t msgq_id;
-	// char msgq_name[MSG_QUEUE_NAME_SZ];
 	char client_name[32];
 };
 

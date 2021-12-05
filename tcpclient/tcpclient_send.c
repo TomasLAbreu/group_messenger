@@ -63,7 +63,7 @@ int main(int argc, char *argv[])
 			if(err == EAGAIN)
 				// no more messages to read
 				break;
-			
+
 			// else, error not expected
 			panic("In mq_receive()");
 		}
