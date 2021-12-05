@@ -1,9 +1,12 @@
 # group_messenger
 ## Overview
 This application implements a "Broadcasting Chat service", making use of three services:
+
 **Client Message Receiver Service**: *tcpclient_recv*
+
 **Client Message Sender Service**: *tcpclient_send*
-**Server App**:* tcpserver*
+
+**Server App**: *tcpserver*
 
 - Each Client is connected to the Server via TCP/IP.
 - Each Client connected to the Server is be able to send to the Server a character string passed by argument via command line arguments.
@@ -22,6 +25,7 @@ This application makes use of POSIX Threads, Daemons, IPC (message queues), TCP/
 ## Dependencies
 - ***make***
 - ***scp***
+- ***rm***
 
 
 ## Installation
@@ -48,11 +52,11 @@ If you want to compile server files and client files separately you can do it by
 $ make client CC=arm-linux-gcc
 $ make server CC=gcc
 ```
-4. Delete all generated files.
+4. Delete all generated files (using ***rm***).
 ```shell
 $ make clean
 ```
-5. Copy all generated files to a remote host on a network, defined by a given **IP**, and with destination **DIR**, using ***scp***.
+5. Copy all generated files to a remote host on a network, defined by a given **IP**, and with destination **DIR** (using ***scp***).
 
    *Example*: copy all generated files to a remote host that has an IP of 10.42.0.254, and into the folder /etc/group_messenger/.
 ```shell
