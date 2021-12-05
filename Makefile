@@ -1,30 +1,41 @@
-CC=gcc
-# CC=arm-buildroot-linux-gnueabihf-gcc
+CLIENT=./tcpclient
+SERVER=./tcpserver
 
-CFLAGS=-pthread -lrt
-#DEPS=parser.h
-OBJS=tcpclient_send.elf tcpclient_recv.elf tcpserver.elf
-# TARGET=
-IP=10.42.0.254
-PATHRASP=/etc/code/tcp/messengerv2
+# ---------------
+# make all
+# ---------------
+all: client server
 
-all:$(OBJS) 
+client:
+	$(MAKE) all -C $(CLIENT)
+	@find $(CLIENT) -name "*.elf" | xargs cp -u -t .
+	@echo ''
 
-tcpclient_recv.elf: tcpclient_recv.c parser.c
-	$(CC) -o tcpclient_recv.elf tcpclient_recv.c parser.c $(CFLAGS)
+server:
+	$(MAKE) all -C $(SERVER)
+	@find $(SERVER) -name "*.elf" | xargs cp -u -t .
+	@echo ''
 
-tcpserver.elf: tcpserver.c parser.c
-	$(CC) -o tcpserver.elf tcpserver.c parser.c $(CFLAGS)
+# ---------------
+# make transfer
+# ---------------
+transfer: transfer_client transfer_server
 
-tcpclient_send.elf: tcpclient_send.c
-	$(CC) -o tcpclient_send.elf tcpclient_send.c $(CFLAGS)
+transfer_client:
+	$(MAKE) transfer -C $(CLIENT)
+	@echo ''
 
-# $(OBJS): %.elf: %.c
-# 	$(CC) -o  $@ $< $(CFLAGS)
+transfer_server:
+	$(MAKE) transfer -C $(SERVER)
+	@echo ''
 
-transfer: 
-	scp $(OBJS) root@$(IP):$(PATHRASP)
-
-.PHONY: clean
+# ---------------
+# make clean
+# ---------------
 clean:
-	rm -rf *.elf *.o
+	@rm -f *.elf
+	$(MAKE) $@ -C $(CLIENT)
+	@echo ''
+	$(MAKE) $@ -C $(SERVER)
+
+.PHONY: all clean transfer
